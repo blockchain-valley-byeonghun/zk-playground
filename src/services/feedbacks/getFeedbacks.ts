@@ -17,9 +17,13 @@ async function getFeedbacks() {
         address: SEMAPHORE_CONTRACT_ADDRESS
     })
 
-    const proofs = await semaphore.getGroupVerifiedProofs("19")
+    const proofs = await semaphore.getGroupVerifiedProofs("20")
+
     console.log('proofs>>>>',proofs)
     console.log('proofToHexString>>',proofs.map(({ signal }: any) => utils.parseBytes32String(BigNumber.from(signal).toHexString())))
+
+    const agnedaMembers = await semaphore.getGroupMembers("20")
+    console.log('agnedaMembers',agnedaMembers)
 }
 getFeedbacks()
 
